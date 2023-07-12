@@ -24,7 +24,7 @@ secrets:
 
 services:
     mariadb:
-        user: "${USER_ID}:${GROUP_ID}"
+        # user: "${USER_ID}:${GROUP_ID}"
         image: mariadb:latest
         secrets:
             - mysql-user
@@ -40,19 +40,19 @@ services:
             - internal-pod
 
     cron:
-        user: "${USER_ID}:${GROUP_ID}"
+        # user: "${USER_ID}:${GROUP_ID}"
         build:
             context: ./images/${DOLI_IMAGE_TAG}
         image: ans/dolibarr:${DOLI_IMAGE_TAG}
         secrets:
             - mysql-user
             - mysql-password
-        volumes:
-            - ./volumes/dolibarr/documents:/var/www/documents:rw
-            - ./volumes/dolibarr/html:/var/www/html:rw
-            - ./volumes/dolibarr/scripts:/var/www/scripts:rw
-            - /etc/localtime:/etc/localtime:ro
-            - /etc/timezone:/etc/timezone:ro
+        # volumes:
+        #     - ./volumes/dolibarr/documents:/var/www/documents:rw
+        #     - ./volumes/dolibarr/html:/var/www/html:rw
+        #     - ./volumes/dolibarr/scripts:/var/www/scripts:rw
+        #     - /etc/localtime:/etc/localtime:ro
+        #     - /etc/timezone:/etc/timezone:ro
         environment:
             DOLI_CRON: 1
             DOLI_CRON_KEY: xxxx
@@ -70,19 +70,19 @@ services:
             - internal-pod
 
     web:
-        user: "${USER_ID}:${GROUP_ID}"
+        # user: "${USER_ID}:${GROUP_ID}"
         build:
             context: ./images/${DOLI_IMAGE_TAG}
         image: ans/dolibarr:${DOLI_IMAGE_TAG}
         secrets:
             - mysql-user
             - mysql-password
-        volumes:
-            - ./volumes/dolibarr/documents:/var/www/documents:rw
-            - ./volumes/dolibarr/html:/var/www/html:rw
-            - ./volumes/dolibarr/scripts:/var/www/scripts:rw
-            - /etc/localtime:/etc/localtime:ro
-            - /etc/timezone:/etc/timezone:ro
+        # volumes:
+        #     - ./volumes/dolibarr/documents:/var/www/documents:rw
+        #     - ./volumes/dolibarr/html:/var/www/html:rw
+        #     - ./volumes/dolibarr/scripts:/var/www/scripts:rw
+        #     - /etc/localtime:/etc/localtime:ro
+        #     - /etc/timezone:/etc/timezone:ro
         depends_on:
             - mariadb
         environment:
