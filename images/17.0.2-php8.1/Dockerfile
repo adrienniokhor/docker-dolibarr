@@ -7,7 +7,7 @@ LABEL maintainer="Garcia MICHEL <garcia@soamichel.fr>"
 
 ENV DOLI_VERSION 17.0.2
 ENV DOLI_INSTALL_AUTO 1
-ENV DOLI_PROD 1
+ENV DOLI_PROD 0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST mysql
